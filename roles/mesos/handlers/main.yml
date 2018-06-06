@@ -1,0 +1,15 @@
+---
+
+# While waiting for https://github.com/ansible/ansible-modules-core/issues/191
+- name: Reload daemon
+  command: systemctl daemon-reload
+
+
+# Restarting the service when notified from the task
+- name: Restart mesos-master
+  service: name=mesos-master state=restarted
+  when: inventory_hostname in groups['master'] or inventory_hostname in groups['master-slave']
+
+- name: Restart mesos-slave
+  service: name=mesos-slave state=restarted
+  when: inventory_hostname in groups['slave'] or inventory_hostname in groups['master-slave']

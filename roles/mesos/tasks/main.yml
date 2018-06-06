@@ -1,0 +1,6 @@
+---
+# Here we are including the yml files for installation and configuration
+- include: mesos_install.yml
+  when: ansible_os_family == "Debian"
+
+- include: mesos_config.yml tags=configuration
