@@ -40,8 +40,7 @@ How to add the details in inventory
 Please add the hosts that you want to create them as mesos-master
 [slave]
 Please add the hosts that you want to create them as mesos-salves
-[master-slave]
-Please add the hosts that you want to create them as both master and slave
+
 ```
 Example:
 ```
@@ -54,12 +53,8 @@ ec2-xx-xxx-xx-xxx.us-west-2.compute.amazonaws.com
 ec2-yy-yyy-yy-yyy.us-west-2.compute.amazonaws.com
 ec2-yy-yyy-yyy-yyy.us-west-2.compute.amazonaws.com
 
-
-[master-slave]
-ec2-XY-XYX-XY-XYX.us-west-2.compute.amazonaws.com
-ec2-XY-XYX-XY-XYX.us-west-2.compute.amazonaws.com
-
 ```
+>**please add the hostname in both([master] and [slave])if you want them to be master as well as slave**
 
 How to run 
 ------------
