@@ -25,27 +25,27 @@
 
 - name: Mesos Master config file
   template: src=conf-mesos-master.j2 dest=/etc/default/mesos-master
-  when: inventory_hostname in groups['master'] or inventory_hostname in groups['master-slave'] 
+  when: inventory_hostname in groups['master']
   notify:
     - Restart mesos-master
 
 - name: Mesos Slave config file
   template: src=conf-mesos-slave.j2 dest=/etc/default/mesos-slave
-  when: inventory_hostname in groups['slave'] or inventory_hostname in groups['master-slave']
+  when: inventory_hostname in groups['slave']
   notify:
     - Restart mesos-slave
 
 - name: Mesos master upstart script
   template: src=init-mesos-master.j2 dest=/etc/init/mesos-master.conf
   when:
-    - (inventory_hostname in groups['master'] or inventory_hostname in groups['master-slave'])
+    - inventory_hostname in groups['master']
   notify:
     - Restart mesos-master
 
 - name: Mesos slave upstart script
   template: src=init-mesos-slave.j2 dest=/etc/init/mesos-slave.conf
   when:
-    - (inventory_hostname in groups['slave'] or inventory_hostname in groups['master-slave'])
+    - inventory_hostname in groups['slave']
   notify:
     - Restart mesos-slave
 
@@ -55,14 +55,14 @@
 
 - name: Mesos master systemd script
   template: src=mesos-master.service.j2 dest=/lib/systemd/system/mesos-master.service
-  when: (inventory_hostname in groups['master'] or inventory_hostname in groups['master-slave']) and systemd_check.stat.exists == true
+  when: inventory_hostname in groups['master'] and systemd_check.stat.exists == true
   notify:
     - Reload daemon
     - Restart mesos-master
 
 - name: Mesos slave systemd script
   template: src=mesos-slave.service.j2 dest=/lib/systemd/system/mesos-slave.service
-  when: (inventory_hostname in groups['slave'] or inventory_hostname in groups['master-slave']) and systemd_check.stat.exists == true
+  when: inventory_hostname in groups['slave'] and systemd_check.stat.exists == true
   notify:
     - Reload daemon
     - Restart mesos-slave
@@ -74,12 +74,3 @@
 - name: Enable/Disable mesos-slave service
   service: name=mesos-slave enabled=true
   when: systemd_check.stat.exists == true and inventory_hostname in groups['slave']
-
-- name: Enable/Disable mesos-master and mesos-slave service
-  service: name=mesos-master enabled=true
-  when: systemd_check.stat.exists == true and inventory_hostname in groups['master-slave']
-
-- name: Enable/Disable mesos-slave and mesos-master service
-  service: name=mesos-slave enabled=true
-  when: systemd_check.stat.exists == true and inventory_hostname in groups['master-slave']
-
