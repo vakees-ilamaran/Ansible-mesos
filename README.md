@@ -18,7 +18,7 @@ Ansible version at least 2.0
 
 Vault file creation process
 ------------
-Move to the below folder
+Move to the below folder and `remove the existing main.yml file`
 >$cd Ansible-mesos/vars/
 
 Now run the below mentioned command and create a password for the vault file
