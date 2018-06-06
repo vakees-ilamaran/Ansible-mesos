@@ -9,7 +9,7 @@ Dependencies
 ------------
 1. Java
 2. Zookeeper
- - https://github.com/vakees1424/Ansible-zookeeper
+    - https://github.com/vakees1424/Ansible-zookeeper
 
 
 Requirements
