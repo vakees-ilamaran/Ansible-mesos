@@ -3,6 +3,3 @@ host-master #Enter the master hostname
 
 [slave]
 host-slave #Enter the slave hostname
-
-[master-slave]
-host-master/slave #Enter the host to use as master and slave
