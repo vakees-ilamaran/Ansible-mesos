@@ -1,5 +1,6 @@
 ---
 - name: Add apt-key
+  become: yes
   apt_key: id=E56151BF keyserver=keyserver.ubuntu.com state=present
 
 - name: Add mesosphere repo
