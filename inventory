@@ -1,5 +1,11 @@
 [master]
-host-master #Enter the master hostname
+host-master1  #Enter the master hostname
+host-master2
+host-master3
 
 [slave]
-host-slave #Enter the slave hostname
+host-slave1  #Enter the slave hostname
+host-slave2
+host-slave3
+host-slave4
+host-slave5
