@@ -47,10 +47,13 @@ Example:
 [master]
 ec2-xx-xxx-xx-xxx.us-west-2.compute.amazonaws.com
 ec2-xx-xxx-xx-xxx.us-west-2.compute.amazonaws.com
+ec2-xx-xxx-xx-xxx.us-west-2.compute.amazonaws.com
 
 
 [slave]
 ec2-yy-yyy-yy-yyy.us-west-2.compute.amazonaws.com
+ec2-yy-yyy-yyy-yyy.us-west-2.compute.amazonaws.com
+ec2-yy-yyy-yyy-yyy.us-west-2.compute.amazonaws.com
 ec2-yy-yyy-yyy-yyy.us-west-2.compute.amazonaws.com
 
 ```
